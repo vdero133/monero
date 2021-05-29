@@ -36,7 +36,7 @@
 
 #include "common/command_line.h"
 #include "cryptonote_basic/fwd.h"
-#include "net/zmq.h"
+#include "net/zmq_adapter.h"
 #include "rpc/fwd.h"
 #include "rpc/rpc_handler.h"
 #include "span.h"

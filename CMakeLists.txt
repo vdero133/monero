@@ -48,6 +48,38 @@ message(STATUS "CMake version ${CMAKE_VERSION}")
 
 project(monero)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
+
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
+  message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
+  file(DOWNLOAD "https://raw.githubusercontent.com/conan-io/cmake-conan/v0.16.1/conan.cmake"
+          "${CMAKE_BINARY_DIR}/conan.cmake"
+          EXPECTED_HASH SHA256=396e16d0f5eabdc6a14afddbcfff62a54a7ee75c6da23f32f7a31bc85db23484
+          TLS_VERIFY ON)
+endif()
+
+include(${CMAKE_BINARY_DIR}/conan.cmake)
+
+conan_cmake_configure(REQUIRES
+        boost/1.72.0
+        pkgconf/1.7.4
+        openssl/1.1.1k
+        zeromq/4.3.4
+        GENERATORS cmake_find_package)
+
+conan_cmake_autodetect(settings)
+
+conan_cmake_install(PATH_OR_REFERENCE .
+        BUILD missing
+        REMOTE conan-center
+        SETTINGS ${settings})
+
+include(FindZeroMQ)
+include(FindBoost)
+include(FindOpenSSL)
+include_directories(${ZeroMQ_INCLUDES})
+
 option (USE_CCACHE "Use ccache if a usable instance is found" ON)
 if (USE_CCACHE)
 	include(FindCcache) # Has to be included after the project() macro, to be able to read the CXX variable.
