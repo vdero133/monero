@@ -53,7 +53,7 @@
 #include "net/error.h"
 #include "net/net_helper.h"
 #include "math_helper.h"
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "p2p_protocol_defs.h"
 #include "net/local_ip.h"
 #include "crypto/crypto.h"

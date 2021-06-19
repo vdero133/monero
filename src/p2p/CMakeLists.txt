@@ -43,10 +43,10 @@ target_link_libraries(p2p
     net
     ${UPNP_LIBRARIES}
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
+    Boost::program_options
+    Boost::filesystem
+    Boost::system
+    Boost::thread
+    Boost::serialization
   PRIVATE
     ${EXTRA_LIBRARIES})

@@ -39,7 +39,7 @@
 #include <unordered_map>
 #include <string>
 #include <boost/algorithm/string.hpp>
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "fnv1.h"
 #include "common/utf8.h"
 

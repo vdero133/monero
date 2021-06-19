@@ -57,9 +57,8 @@ set(wallet_api_private_headers
   subaddress_account.h
   unsigned_transaction.h)
 
-monero_private_headers(wallet_api
-  ${wallet_api_private_headers})
-monero_add_library(wallet_api
+
+add_library(wallet_api
   ${wallet_api_sources}
   ${wallet_api_headers}
   ${wallet_api_private_headers})
@@ -71,11 +70,11 @@ target_link_libraries(wallet_api
     mnemonics
     ${LMDB_LIBRARY}
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
+    Boost::serialization
+    Boost::filesystem
+    Boost::system
+    Boost::thread
+    Boost::regex
   PRIVATE
     ${EXTRA_LIBRARIES})
 

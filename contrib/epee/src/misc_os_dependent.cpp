@@ -24,7 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#include "misc_os_dependent.h"
+#include "epee/misc_os_dependent.h"
 #include <boost/lexical_cast.hpp>
 
 namespace epee

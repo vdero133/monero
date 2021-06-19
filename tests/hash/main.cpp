@@ -35,7 +35,7 @@
 #include <string>
 #include <cfenv>
 
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "warnings.h"
 #include "crypto/hash.h"
 #include "crypto/variant2_int_sqrt.h"

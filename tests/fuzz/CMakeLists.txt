@@ -104,7 +104,7 @@ target_link_libraries(load-from-binary_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::program_options
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -117,7 +117,7 @@ target_link_libraries(load-from-json_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::program_options
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -130,7 +130,7 @@ target_link_libraries(base58_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::program_options
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -142,9 +142,9 @@ monero_add_minimal_executable(parse-url_fuzz_tests parse_url.cpp fuzzer.cpp)
 target_link_libraries(parse-url_fuzz_tests
   PRIVATE
     epee
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::regex
+    Boost::program_options
+    Boost::system
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -156,11 +156,11 @@ monero_add_minimal_executable(http-client_fuzz_tests http-client.cpp fuzzer.cpp)
 target_link_libraries(http-client_fuzz_tests
   PRIVATE
     epee
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::regex
+    Boost::program_options
+    Boost::system
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -173,10 +173,10 @@ target_link_libraries(levin_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::regex
+    Boost::program_options
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -189,10 +189,10 @@ target_link_libraries(bulletproof_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::regex
+    Boost::program_options
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -206,11 +206,11 @@ target_link_libraries(tx-extra_fuzz_tests
     cryptonote_basic
     common
     epee
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::regex
+    Boost::program_options
+    Boost::system
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     $ENV{LIB_FUZZING_ENGINE})
@@ -223,7 +223,7 @@ target_link_libraries(utf8_fuzz_tests
   PRIVATE
     common
     epee
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${Boost_CHRONO_LIBRARY}
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}

@@ -46,10 +46,10 @@ target_link_libraries(libwallet_api_tests
     version
     epee
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::serialization
+    Boost::filesystem
+    Boost::thread
+    Boost::system
     ${Boost_LOCALE_LIBRARY}
     ${ICU_LIBRARIES}
     ${GTEST_LIBRARIES}

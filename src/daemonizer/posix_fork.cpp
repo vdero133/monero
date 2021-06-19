@@ -5,7 +5,7 @@
 //
 
 #include "daemonizer/posix_fork.h"
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 
 #include <cstdlib>
 #include <fcntl.h>

@@ -24,15 +24,15 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include "byte_slice.h"
-#include "byte_stream.h"
-#include "misc_log_ex.h"
-#include "span.h"
-#include "storages/portable_storage.h"
-#include "storages/portable_storage_to_json.h"
-#include "storages/portable_storage_from_json.h"
-#include "storages/portable_storage_to_bin.h"
-#include "storages/portable_storage_from_bin.h"
+#include "epee/byte_slice.h"
+#include "epee/byte_stream.h"
+#include "epee/misc_log_ex.h"
+#include "epee/span.h"
+#include "epee/storages/portable_storage.h"
+#include "epee/storages/portable_storage_to_json.h"
+#include "epee/storages/portable_storage_from_json.h"
+#include "epee/storages/portable_storage_to_bin.h"
+#include "epee/storages/portable_storage_from_bin.h"
 
 #include <boost/utility/string_ref.hpp>
 

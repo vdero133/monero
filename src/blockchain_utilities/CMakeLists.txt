@@ -143,9 +143,9 @@ target_link_libraries(blockchain_import
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES}
     ${Blocks})
@@ -170,9 +170,9 @@ target_link_libraries(blockchain_export
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -192,9 +192,9 @@ target_link_libraries(blockchain_blackball
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -214,9 +214,9 @@ target_link_libraries(blockchain_usage
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -235,9 +235,9 @@ target_link_libraries(blockchain_ancestry
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -256,9 +256,9 @@ target_link_libraries(blockchain_depth
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -277,9 +277,9 @@ target_link_libraries(blockchain_stats
     blockchain_db
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -299,9 +299,9 @@ target_link_libraries(blockchain_prune_known_spent_data
     p2p
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 
@@ -326,8 +326,8 @@ target_link_libraries(blockchain_prune
     p2p
     version
     epee
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+    Boost::filesystem
+    Boost::system
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})

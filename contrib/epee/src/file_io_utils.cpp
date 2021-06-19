@@ -24,7 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#include "file_io_utils.h"
+#include "epee/file_io_utils.h"
 
 #include <fstream>
 #include <boost/filesystem/path.hpp>

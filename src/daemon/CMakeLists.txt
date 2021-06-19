@@ -83,10 +83,10 @@ target_link_libraries(daemon
     ${EPEE_READLINE}
     version
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::filesystem
+    Boost::program_options
+    Boost::regex
+    Boost::system
     ${CMAKE_THREAD_LIBS_INIT}
     ${ZMQ_LIB}
     ${GNU_READLINE_LIBRARY}

@@ -39,7 +39,7 @@
 #include <boost/scope_exit.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/recursive_mutex.hpp>
-#include "cryptonote_config.h"
+#include <monero/config/cryptonote_config.h>
 #include "trezor.hpp"
 
 #ifdef WITH_TREZOR_DEBUGGING

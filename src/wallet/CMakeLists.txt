@@ -53,9 +53,7 @@ set(wallet_private_headers
   message_transporter.h
   wallet_rpc_helpers.h)
 
-monero_private_headers(wallet
-  ${wallet_private_headers})
-monero_add_library(wallet
+add_library(wallet
   ${wallet_sources}
   ${wallet_private_headers})
 target_link_libraries(wallet
@@ -69,11 +67,11 @@ target_link_libraries(wallet
     net
     ${LMDB_LIBRARY}
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
+    Boost::serialization
+    Boost::filesystem
+    Boost::system
+    Boost::thread
+    Boost::regex
   PRIVATE
     ${EXTRA_LIBRARIES})
 
@@ -86,9 +84,8 @@ if(NOT IOS)
   set(wallet_rpc_private_headers
     wallet_rpc_server.h)
 
-  monero_private_headers(wallet_rpc_server
-    ${wallet_rpc_private_headers})
-  monero_add_executable(wallet_rpc_server
+
+  add_executable(wallet_rpc_server
     ${wallet_rpc_sources}
     ${wallet_rpc_headers}
     ${wallet_rpc_private_headers})
@@ -104,9 +101,9 @@ if(NOT IOS)
       daemonizer
       ${EPEE_READLINE}
       ${Boost_CHRONO_LIBRARY}
-      ${Boost_PROGRAM_OPTIONS_LIBRARY}
-      ${Boost_FILESYSTEM_LIBRARY}
-      ${Boost_THREAD_LIBRARY}
+      Boost::program_options
+      Boost::filesystem
+      Boost::thread
       ${CMAKE_THREAD_LIBS_INIT}
       ${EXTRA_LIBRARIES})
   set_property(TARGET wallet_rpc_server

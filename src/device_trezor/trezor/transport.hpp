@@ -38,7 +38,7 @@
 
 #include <typeinfo>
 #include <type_traits>
-#include "net/http_client.h"
+#include <epee/net/http_client.h>
 
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"

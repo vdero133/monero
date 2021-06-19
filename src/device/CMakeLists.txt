@@ -27,55 +27,39 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 set(device_sources
-  device.cpp
-  device_default.cpp
-  log.cpp
-  )
+        src/device.cpp
+        src/device_default.cpp
+        src/log.cpp
+        )
 
-if(HIDAPI_FOUND)
-  set(device_sources 
-    ${device_sources} 
-    device_ledger.cpp
-    device_io_hid.cpp
-    )
-endif()
-
-set(device_headers
-  device.hpp
-  device_io.hpp
-  device_default.hpp
-  device_cold.hpp
-  log.hpp
- )
-
-if(HIDAPI_FOUND)
-  set(device_headers 
-    ${device_headers} 
-    device_ledger.hpp
-    device_io_hid.hpp
-    )
-endif()
-
-set(device_private_headers)
+if (HIDAPI_FOUND)
+    set(device_sources
+            ${device_sources}
+            src/device_ledger.cpp
+            src/device_io_hid.cpp
+            )
+endif ()
 
 
-monero_private_headers(device
-  ${device_private_headers})
+add_library(device
+        ${device_sources}
+        )
 
-monero_add_library(device
-  ${device_sources}
-  ${device_headers}
-  ${device_private_headers})
-
+target_include_directories(device
+        PUBLIC
+        include/
+        )
 target_link_libraries(device
-  PUBLIC
-    ${HIDAPI_LIBRARIES}
-    cncrypto
-    ringct_basic
-    wallet-crypto
-    ${OPENSSL_CRYPTO_LIBRARIES}
-    ${Boost_SERIALIZATION_LIBRARY}
-  PRIVATE
-    version
-    ${Blocks}
-    ${EXTRA_LIBRARIES})
+        PUBLIC
+        ${HIDAPI_LIBRARIES}
+        cncrypto
+        version
+        ringct_basic
+        wallet-crypto
+        OpenSSL::Crypto
+        OpenSSL::SSL
+        Boost::serialization
+        PRIVATE
+        version
+        ${Blocks}
+        ${EXTRA_LIBRARIES})

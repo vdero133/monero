@@ -42,7 +42,7 @@
 
 #include "device/device_default.hpp"
 #include "device/device_cold.hpp"
-#include "cryptonote_config.h"
+#include <monero/config/cryptonote_config.h>
 #include "device_trezor_base.hpp"
 #endif
 

@@ -26,9 +26,9 @@
 // STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "net/levin_base.h"
+#include "epee/net/levin_base.h"
 
-#include "int-util.h"
+#include "epee/int-util.h"
 
 namespace epee
 {

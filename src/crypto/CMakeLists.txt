@@ -26,97 +26,50 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-set(crypto_sources
-  aesb.c
-  blake256.c
-  chacha.c
-  crypto-ops-data.c
-  crypto-ops.c
-  crypto.cpp
-  groestl.c
-  hash-extra-blake.c
-  hash-extra-groestl.c
-  hash-extra-jh.c
-  hash-extra-skein.c
-  hash.c
-  hmac-keccak.c
-  jh.c
-  keccak.c
-  oaes_lib.c
-  random.c
-  skein.c
-  slow-hash.c
-  rx-slow-hash.c
-  CryptonightR_JIT.c
-  tree-hash.c)
-
-if(ARCH_ID STREQUAL "i386" OR ARCH_ID STREQUAL "x86_64" OR ARCH_ID STREQUAL "x86-64" OR ARCH_ID STREQUAL "amd64")
-list(APPEND crypto_sources CryptonightR_template.S)
-endif()
-
-include_directories(${RANDOMX_INCLUDE})
-
-set(crypto_headers)
-
-set(crypto_private_headers
-  blake256.h
-  chacha.h
-  crypto-ops.h
-  crypto.h
-  generic-ops.h
-  groestl.h
-  groestl_tables.h
-  hash-ops.h
-  hash.h
-  hmac-keccak.h
-  initializer.h
-  jh.h
-  keccak.h
-  oaes_config.h
-  oaes_lib.h
-  random.h
-  skein.h
-  skein_port.h
-  CryptonightR_JIT.h
-  CryptonightR_template.h)
-
-monero_private_headers(cncrypto
-  ${crypto_private_headers})
-monero_add_library(cncrypto
-  ${crypto_sources}
-  ${crypto_headers}
-  ${crypto_private_headers})
+add_library(cncrypto
+        STATIC
+        src/aesb.c
+        src/blake256.c
+        src/chacha.c
+        src/crypto.cpp
+        src/CryptonightR_JIT.c
+        src/crypto-ops.c
+        src/crypto-ops-data.c
+        src/groestl.c
+        src/hash.c
+        src/hash-extra-blake.c
+        src/hash-extra-groestl.c
+        src/hash-extra-jh.c
+        src/hash-extra-skein.c
+        src/hmac-keccak.c
+        src/jh.c
+        src/keccak.c
+        src/oaes_lib.c
+        src/random.c
+        src/rx-slow-hash.c
+        src/skein.c
+        src/slow-hash.c
+        src/tree-hash.c)
+target_include_directories(cncrypto
+        PUBLIC
+        include/
+        )
 target_link_libraries(cncrypto
   PUBLIC
     epee
     randomx
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::system
     ${SODIUM_LIBRARY}
   PRIVATE
+        config
     ${EXTRA_LIBRARIES})
 
-if (ARM)
-  option(NO_OPTIMIZED_MULTIPLY_ON_ARM
-	   "Compute multiply using generic C implementation instead of ARM ASM" OFF)
-  if(NO_OPTIMIZED_MULTIPLY_ON_ARM)
-    message(STATUS "Using generic C implementation for multiply")
-    set_property(SOURCE slow-hash.c
-      PROPERTY COMPILE_DEFINITIONS "NO_OPTIMIZED_MULTIPLY_ON_ARM")
-  endif()
+target_architecture(ARCH)
+if(${ARCH} STREQUAL "armv8")
+    target_compile_options(cncrypto PUBLIC -march=armv8-a+crypto)
+elseif(${ARCH} STREQUAL "i386" OR ${ARCH} STREQUAL "x86_64" OR ${ARCH} STREQUAL "x86-64" OR ${ARCH} STREQUAL "amd64")
+    target_compile_options(cncrypto PUBLIC -maes)
 endif()
 
-# Because of the way Qt works on android with JNI, the code does not live in the main android thread
-# So this code runs with a 1 MB default stack size. 
-# This will force the use of the heap for the allocation of the scratchpad
-if (ANDROID OR IOS)
-  if( BUILD_GUI_DEPS )
-    add_definitions(-DFORCE_USE_HEAP=1)
-  endif()
-endif()
 
-# cheat because cmake and ccache hate each other
-set_property(SOURCE CryptonightR_template.S PROPERTY LANGUAGE C)
-set_property(SOURCE CryptonightR_template.S PROPERTY XCODE_EXPLICIT_FILE_TYPE sourcecode.asm)
-
-# Must be done last, because it references libraries in this directory
-add_subdirectory(wallet)
+add_library(wallet-crypto ALIAS cncrypto)

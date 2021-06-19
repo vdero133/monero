@@ -52,11 +52,11 @@ target_link_libraries(simplewallet
     qrcodegen
     version
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
+    Boost::program_options
+    Boost::filesystem
     ${Boost_LOCALE_LIBRARY}
     ${ICU_LIBRARIES}
-    ${Boost_THREAD_LIBRARY}
+    Boost::thread
     ${CMAKE_THREAD_LIBS_INIT}
     ${GNU_READLINE_LIBRARY}
     ${EXTRA_LIBRARIES})

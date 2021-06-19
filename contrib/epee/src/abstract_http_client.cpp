@@ -1,7 +1,7 @@
-#include "net/abstract_http_client.h"
-#include "net/http_base.h"
-#include "net/net_parse_helpers.h"
-#include "misc_log_ex.h"
+#include "epee/net/abstract_http_client.h"
+#include "epee/net/http_base.h"
+#include "epee/net/net_parse_helpers.h"
+#include "epee/misc_log_ex.h"
 
 #undef MONERO_DEFAULT_LOG_CATEGORY
 #define MONERO_DEFAULT_LOG_CATEGORY "net.http"

@@ -43,7 +43,7 @@
 #include <utility>
 #include <vector>
 
-#include "cryptonote_config.h"
+#include <monero/config/cryptonote_config.h>
 #include "cryptonote_protocol/fwd.h"
 #include "cryptonote_protocol/levin_notify.h"
 #include "warnings.h"

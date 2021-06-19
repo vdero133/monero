@@ -30,7 +30,7 @@
 #include <string.h>
 #include "gtest/gtest.h"
 
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "wipeable_string.h"
 #include "hex.h"
 

@@ -26,39 +26,23 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-if(APPLE)
-  if(DEPENDS)
-    list(APPEND EXTRA_LIBRARIES "-framework Foundation -framework ApplicationServices -framework AppKit -framework IOKit")
-  else()
-    find_library(IOKIT_LIBRARY IOKit)
-    mark_as_advanced(IOKIT_LIBRARY)
-    list(APPEND EXTRA_LIBRARIES ${IOKIT_LIBRARY})
-  endif()
-endif()
+add_library(checkpoints
+        src/checkpoints.cpp)
+target_include_directories(checkpoints
+        PUBLIC
+        include/)
 
-set(checkpoints_sources
-  checkpoints.cpp)
-
-set(checkpoints_headers)
-
-set(checkpoints_private_headers
-  checkpoints.h)
-
-monero_private_headers(checkpoints
-  ${checkpoints_private_headers})
-monero_add_library(checkpoints
-  ${checkpoints_sources}
-  ${checkpoints_headers}
-  ${checkpoints_private_headers})
 target_link_libraries(checkpoints
   PUBLIC
     common
+       config
     cncrypto
-    ${Boost_DATE_TIME_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
+        cryptonote_basic
+    Boost::date_time
+    Boost::program_options
+    Boost::serialization
+    Boost::filesystem
+    Boost::system
+    Boost::thread
   PRIVATE
     ${EXTRA_LIBRARIES})

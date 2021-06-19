@@ -24,8 +24,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include "string_tools.h"
-#include "string_tools_lexical.h"
+#include "epee/string_tools.h"
+#include "epee/string_tools_lexical.h"
 
 
 // Previously pulled in by ASIO, further cleanup still required ...
@@ -41,13 +41,13 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/utility/string_ref.hpp>
-#include "misc_log_ex.h"
-#include "storages/parserse_base_utils.h"
-#include "hex.h"
-#include "memwipe.h"
-#include "mlocker.h"
-#include "span.h"
-#include "warnings.h"
+#include "epee/misc_log_ex.h"
+#include "epee/storages/parserse_base_utils.h"
+#include "epee/hex.h"
+#include "epee/memwipe.h"
+#include "epee/mlocker.h"
+#include "epee/span.h"
+#include "epee/warnings.h"
 
 #include <ctype.h>
 

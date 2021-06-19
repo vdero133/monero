@@ -26,44 +26,38 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-set(cryptonote_core_sources
-  blockchain.cpp
-  cryptonote_core.cpp
-  tx_pool.cpp
-  tx_sanity_check.cpp
-  cryptonote_tx_utils.cpp)
-
-set(cryptonote_core_headers)
-
-set(cryptonote_core_private_headers
-  blockchain_storage_boost_serialization.h
-  blockchain.h
-  cryptonote_core.h
-  tx_pool.h
-  tx_sanity_check.h
-  cryptonote_tx_utils.h)
-
-monero_private_headers(cryptonote_core
-  ${cryptonote_core_private_headers})
-monero_add_library(cryptonote_core
-  ${cryptonote_core_sources}
-  ${cryptonote_core_headers}
-  ${cryptonote_core_private_headers})
+add_library(
+        cryptonote_core
+        STATIC
+        src/blockchain.cpp
+        src/cryptonote_core.cpp
+        src/cryptonote_tx_utils.cpp
+        src/tx_pool.cpp
+        src/tx_sanity_check.cpp
+)
+target_include_directories(
+        cryptonote_core
+        PUBLIC
+        include/
+)
 target_link_libraries(cryptonote_core
-  PUBLIC
-    version
-    common
-    cncrypto
-    blockchain_db
-    multisig
-    ringct
-    device
-    hardforks
-    ${Boost_DATE_TIME_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SERIALIZATION_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-  PRIVATE
-    ${EXTRA_LIBRARIES})
+        PUBLIC
+        version
+        common
+        checkpoints
+        cncrypto
+        cryptonote_basic
+        blockchain_db
+        multisig
+        ringct
+        device
+        hardforks
+        rpc
+        Boost::date_time
+        Boost::program_options
+        Boost::serialization
+        Boost::filesystem
+        Boost::system
+        Boost::thread
+        PRIVATE
+        ${EXTRA_LIBRARIES})

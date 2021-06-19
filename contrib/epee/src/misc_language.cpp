@@ -24,7 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#include "misc_language.h"
+#include "epee/misc_language.h"
 
 #include <boost/thread.hpp>
 

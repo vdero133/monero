@@ -45,7 +45,7 @@
 #include "wallet/wallet2.h"
 #include "console_handler.h"
 #include "math_helper.h"
-#include "wipeable_string.h"
+#include <epee/wipeable_string.h>
 #include "common/i18n.h"
 #include "common/password.h"
 #include "crypto/crypto.h"  // for definition of crypto::secret_key

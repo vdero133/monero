@@ -26,31 +26,21 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-set(serialization_sources
-  json_object.cpp)
 
-set(serialization_headers)
-
-set(serialization_private_headers
-  json_object.h)
-
-monero_private_headers(serialization
-  ${serialization_private_headers})
-monero_add_library(serialization
-  ${serialization_sources}
-  ${serialization_headers}
-  ${serialization_private_headers})
+add_library(serialization STATIC src/json_object.cpp)
+target_include_directories(serialization PUBLIC include/)
 target_link_libraries(serialization
   LINK_PRIVATE
     cryptonote_basic
     cryptonote_core
     cryptonote_protocol
+        common
     epee
-    ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${EXTRA_LIBRARIES})
+    Boost::chrono
+        Boost::regex
+        Boost::system
+        Boost::thread
+)
 add_dependencies(serialization
   version)
 

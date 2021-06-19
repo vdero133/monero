@@ -59,9 +59,9 @@ target_link_libraries(trezor_tests
     cryptonote_protocol
     daemon_rpc_server
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::filesystem
+    Boost::program_options
+    Boost::system
     ${ZMQ_LIB}
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})

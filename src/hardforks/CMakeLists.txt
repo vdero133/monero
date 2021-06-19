@@ -26,20 +26,8 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-set(hardforks_sources
-  hardforks.cpp)
-
-set(hardforks_headers
-  hardforks.h)
-
-set(hardforks_private_headers)
-
-monero_private_headers(hardforks
-  ${hardforks_private_headers})
-monero_add_library(hardforks
-  ${hardforks_sources}
-  ${hardforks_headers}
-  ${hardforks_private_headers})
+add_library(hardforks src/hardforks.cpp)
+target_include_directories(hardforks PUBLIC include/)
 target_link_libraries(hardforks
   PUBLIC
     version

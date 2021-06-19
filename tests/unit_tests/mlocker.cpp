@@ -28,7 +28,7 @@
 
 #include "gtest/gtest.h"
 
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "mlocker.h"
 
 #if defined __GNUC__ && !defined _WIN32

@@ -40,13 +40,13 @@
 
 #include <memory>
 
-#include "syncobj.h"
+#include "epee/syncobj.h"
 
-#include "net/net_utils_base.h" 
-#include "misc_log_ex.h" 
+#include "epee/net/net_utils_base.h"
+#include "epee/misc_log_ex.h"
 #include <boost/chrono.hpp>
-#include "misc_language.h"
-#include "pragma_comp_defs.h"
+#include "epee/misc_language.h"
+#include "epee/pragma_comp_defs.h"
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
@@ -55,10 +55,10 @@
 
 #include <boost/asio/basic_socket.hpp>
 #include <boost/asio/ip/unicast.hpp>
-#include "net/abstract_tcp_server2.h"
+#include "epee/net/abstract_tcp_server2.h"
 
 // TODO:
-#include "net/network_throttle-detail.hpp"
+#include "epee/net/network_throttle-detail.hpp"
 
 #undef MONERO_DEFAULT_LOG_CATEGORY
 #define MONERO_DEFAULT_LOG_CATEGORY "net.throttle"

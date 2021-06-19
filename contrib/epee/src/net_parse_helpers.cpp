@@ -24,10 +24,10 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#include "net/net_parse_helpers.h"
-#include "net/http_base.h"
-#include "misc_log_ex.h"
-#include "reg_exp_definer.h"
+#include "epee/net/net_parse_helpers.h"
+#include "epee/net/http_base.h"
+#include "epee/misc_log_ex.h"
+#include "epee/reg_exp_definer.h"
 #include <boost/lexical_cast.hpp>
 
 #undef MONERO_DEFAULT_LOG_CATEGORY

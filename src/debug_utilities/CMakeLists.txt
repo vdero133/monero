@@ -83,8 +83,8 @@ target_link_libraries(dns_checks
     common
     epee
     version
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
+    Boost::program_options
+    Boost::system
     ${CMAKE_THREAD_LIBS_INIT})
 
 set_property(TARGET dns_checks

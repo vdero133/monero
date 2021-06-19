@@ -34,9 +34,9 @@
 #if defined HAVE_MLOCK
 #include <sys/mman.h>
 #endif
-#include "misc_log_ex.h"
-#include "syncobj.h"
-#include "mlocker.h"
+#include "epee/misc_log_ex.h"
+#include "epee/syncobj.h"
+#include "epee/mlocker.h"
 
 #include <atomic>
 

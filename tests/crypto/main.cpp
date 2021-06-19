@@ -35,7 +35,7 @@
 #include <vector>
 
 #include "warnings.h"
-#include "misc_log_ex.h"
+#include <epee/misc_log_ex.h>
 #include "crypto/crypto.h"
 #include "crypto/hash.h"
 #include "crypto-tests.h"

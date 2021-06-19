@@ -24,9 +24,9 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#include "net/http_base.h"
-#include "memwipe.h"
-#include "string_tools.h"
+#include "epee/net/http_base.h"
+#include "epee/memwipe.h"
+#include "epee/string_tools.h"
 
 #include <boost/regex.hpp>
 #include <string>

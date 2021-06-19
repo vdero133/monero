@@ -1,7 +1,7 @@
 #ifndef SRC_BLOCKS_BLOCKS_H_
 #define SRC_BLOCKS_BLOCKS_H_
 
-#include "cryptonote_config.h"
+#include <monero/config/cryptonote_config.h>
 #include "span.h"
 
 namespace blocks

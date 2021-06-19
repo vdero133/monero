@@ -29,149 +29,112 @@
 include_directories(SYSTEM ${ZMQ_INCLUDE_PATH})
 
 set(rpc_base_sources
-  rpc_args.cpp
-  rpc_payment_signature.cpp
-  rpc_handler.cpp)
+        src/rpc_args.cpp
+        src/rpc_payment_signature.cpp
+        src/rpc_handler.cpp)
 
 set(rpc_sources
-  bootstrap_daemon.cpp
-  bootstrap_node_selector.cpp
-  core_rpc_server.cpp
-  rpc_payment.cpp
-  rpc_version_str.cpp
-  instanciations)
+        src/bootstrap_daemon.cpp
+        src/bootstrap_node_selector.cpp
+        src/core_rpc_server.cpp
+        src/rpc_payment.cpp
+        src/rpc_version_str.cpp
+        src/instanciations.cpp)
 
 set(daemon_messages_sources
-  message.cpp
-  daemon_messages.cpp)
+        src/message.cpp
+        src/daemon_messages.cpp)
 
-set(rpc_pub_sources zmq_pub.cpp)
+set(rpc_pub_sources src/zmq_pub.cpp)
 
 set(daemon_rpc_server_sources
-  daemon_handler.cpp
-  zmq_pub.cpp
-  zmq_server.cpp)
+        src/daemon_handler.cpp
+        src/zmq_pub.cpp
+        src/zmq_server.cpp)
 
+add_library(rpc_base
+        ${rpc_base_sources}
+        )
 
-set(rpc_base_headers
-  rpc_args.h
-  rpc_payment_signature.h
-  rpc_handler.h)
+add_library(rpc
+        ${rpc_sources}
+        )
 
-set(rpc_headers
-  rpc_version_str.h
-  rpc_handler.h)
+add_library(rpc_pub
+        ${rpc_pub_sources}
+        )
 
-set(rpc_pub_headers zmq_pub.h)
+add_library(daemon_messages
+        ${daemon_messages_sources}
+        )
 
-set(daemon_rpc_server_headers)
+add_library(daemon_rpc_server
+        ${daemon_rpc_server_sources}
+        )
 
-set(rpc_private_headers
-  bootstrap_daemon.h
-  core_rpc_server.h
-  rpc_payment.h
-  core_rpc_server_commands_defs.h
-  core_rpc_server_error_codes.h)
-
-set(daemon_messages_private_headers
-  message.h
-  daemon_messages.h)
-
-set(daemon_rpc_server_private_headers
-  message.h
-  daemon_messages.h
-  daemon_handler.h
-  zmq_server.h)
-
-
-monero_private_headers(rpc
-  ${rpc_private_headers})
-
-set(rpc_pub_private_headers)
-
-monero_private_headers(daemon_rpc_server
-  ${daemon_rpc_server_private_headers})
-
-
-monero_add_library(rpc_base
-  ${rpc_base_sources}
-  ${rpc_base_headers}
-  ${rpc_base_private_headers})
-
-monero_add_library(rpc
-  ${rpc_sources}
-  ${rpc_headers}
-  ${rpc_private_headers})
-
-monero_add_library(rpc_pub
-  ${rpc_pub_sources}
-  ${rpc_pub_headers}
-  ${rpc_pub_private_headers})
-
-monero_add_library(daemon_messages
-  ${daemon_messages_sources}
-  ${daemon_messages_headers}
-  ${daemon_messages_private_headers})
-
-monero_add_library(daemon_rpc_server
-  ${daemon_rpc_server_sources}
-  ${daemon_rpc_server_headers}
-  ${daemon_rpc_server_private_headers})
-
-
+target_include_directories(rpc_base
+        PUBLIC
+        include/)
 target_link_libraries(rpc_base
-  PUBLIC
-    common
-    epee
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-  PRIVATE
-    ${EXTRA_LIBRARIES})
-
+        PUBLIC
+        common
+        epee
+        Boost::regex
+        Boost::thread
+        Boost::program_options
+        cryptonote_core
+        PRIVATE
+        ${EXTRA_LIBRARIES})
+target_include_directories(rpc
+        PUBLIC
+        include/)
 target_link_libraries(rpc
-  PUBLIC
-    rpc_base
-    common
-    cryptonote_core
-    cryptonote_protocol
-    net
-    version
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-  PRIVATE
-    ${EXTRA_LIBRARIES})
-
+        PUBLIC
+        rpc_base
+        common
+        cryptonote_core
+        cryptonote_protocol
+        net
+        version
+        Boost::regex
+        Boost::thread
+        PRIVATE
+        ${EXTRA_LIBRARIES})
+target_include_directories(rpc_pub
+        PUBLIC
+        include/)
 target_link_libraries(rpc_pub
-  PUBLIC
-    epee
-    net
-    cryptonote_basic
-    serialization
-    ${Boost_THREAD_LIBRARY})
+        PUBLIC
+        epee
+        net
+        cryptonote_basic
+        cryptonote_core
+        serialization
+        Boost::thread
+)
 
 target_link_libraries(daemon_messages
-  LINK_PRIVATE
-    cryptonote_core
-    cryptonote_protocol
-    version
-    serialization
-    ${EXTRA_LIBRARIES})
+        LINK_PRIVATE
+        cryptonote_core
+        cryptonote_protocol
+        version
+        serialization
+        ${EXTRA_LIBRARIES})
 
 target_link_libraries(daemon_rpc_server
-  LINK_PRIVATE
-    rpc
-    rpc_pub
-    cryptonote_core
-    cryptonote_protocol
-    version
-    daemon_messages
-    serialization
-    ${Boost_CHRONO_LIBRARY}
-    ${Boost_REGEX_LIBRARY}
-    ${Boost_SYSTEM_LIBRARY}
-    ${Boost_THREAD_LIBRARY}
-    ${ZMQ_LIB}
-    ${EXTRA_LIBRARIES})
+        LINK_PRIVATE
+        rpc
+        rpc_pub
+        cryptonote_core
+        cryptonote_protocol
+        version
+        daemon_messages
+        serialization
+        Boost::chrono
+        Boost::regex
+        Boost::system
+        Boost::thread
+        ZeroMQ::libzmq-static
+        ${EXTRA_LIBRARIES})
+
 target_include_directories(daemon_rpc_server PUBLIC ${ZMQ_INCLUDE_PATH})
-target_include_directories(obj_daemon_rpc_server PUBLIC ${ZMQ_INCLUDE_PATH})

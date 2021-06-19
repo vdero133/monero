@@ -37,8 +37,8 @@ target_link_libraries(gen_ssl_cert
     epee
     version
     ${EPEE_READLINE}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
+    Boost::program_options
+    Boost::filesystem
     ${CMAKE_THREAD_LIBS_INIT}
     ${EXTRA_LIBRARIES})
 add_dependencies(gen_ssl_cert

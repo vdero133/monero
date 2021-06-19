@@ -38,7 +38,7 @@
 #include <crypto/hmac-keccak.h>
 #include <ringct/rctSigs.h>
 #include <ringct/bulletproofs.h>
-#include "cryptonote_config.h"
+#include <monero/config/cryptonote_config.h>
 #include <sodium.h>
 #include <sodium/crypto_verify_32.h>
 #include <sodium/crypto_aead_chacha20poly1305.h>

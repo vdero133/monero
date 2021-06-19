@@ -26,16 +26,19 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-cmake_minimum_required (VERSION 3.5)
-project (monero CXX)
 
-file(GLOB CRYPTONOTE_PROTOCOL *)
-source_group(cryptonote_protocol FILES ${CRYPTONOTE_PROTOCOL})
-
-#monero_private_headers(cryptonote_protocol ${CRYPTONOTE_PROTOCOL})
-monero_add_library(cryptonote_protocol ${CRYPTONOTE_PROTOCOL})
+add_library(cryptonote_protocol
+        src/block_queue.cpp
+        src/cryptonote_protocol_handler-base.cpp
+        src/levin_notify.cpp)
+target_include_directories(cryptonote_protocol
+        PUBLIC
+        include/
+        )
 target_link_libraries(cryptonote_protocol
-  PUBLIC
-    p2p
-  PRIVATE
-    ${EXTRA_LIBRARIES})
+        PUBLIC
+        p2p
+        epee
+        cryptonote_core
+        PRIVATE
+        ${EXTRA_LIBRARIES})

@@ -68,7 +68,7 @@ target_link_libraries(daemonizer
   PUBLIC
     common
     ${Boost_CHRONO_LIBRARY}
-    ${Boost_FILESYSTEM_LIBRARY}
-    ${Boost_PROGRAM_OPTIONS_LIBRARY}
+    Boost::filesystem
+    Boost::program_options
   PRIVATE
     ${EXTRA_LIBRARIES})
